@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Party Invitation</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: purple;
+            color: white;
+        }
+
+        h1 {
+            color: blue;
+            font-size: 24px;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+
+        #button, #openingButton {
+            background-color: purple;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #details {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #randomSpot {
+            color: yellow;
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 768px) {
+            #button, #openingButton {
+                font-size: 16px;
+            }
+
+            #randomSpot {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        function revealDetails() {
+            var details = document.getElementById("details");
+            var button = document.getElementById("button");
+            var openingButton = document.getElementById("openingButton");
+            var randomSpot = document.getElementById("randomSpot");
+
+            details.style.display = "block";
+            button.style.display = "none";
+
+            randomSpot.innerHTML = "גיא המלך";
+
+            var interval = setInterval(function () {
+                randomSpot.style.top = Math.floor(Math.random() * 80) + "%";
+                randomSpot.style.left = Math.floor(Math.random() * 80) + "%";
+            }, 200);
+
+            setTimeout(function () {
+                clearInterval(interval);
+            }, 3000);
+        }
+
+        function hideOpeningButton() {
+            var openingButton = document.getElementById("openingButton");
+            openingButton.style.display = "none";
+
+            // Redirect to the invitation page
+            window.location.href = "invite.html";
+        }
+    </script>
+</head>
+<body>
+    <div id="openingPage">
+        <h1>Welcome to the Party Invitation</h1>
+        <button id="openingButton" onclick="hideOpeningButton()">Press if Nimrod is the goat</button>
+    </div>
+
+    <div id="details" class="details">
+        <h1>Party Invitation</h1>
+        <p>
+            זמן: 19:00 1.9<br>
+            מקום: הבית של מיטל לוטן-משה סנה 23<br>
+            פעילות: מלא כיף ריקוד על עמוד ודניאל בנדיקטוב<br>
+            ציוד: מלא אווירה ו7 שעות שינה
+        </p>
+        <div id="randomSpot"></div>
+        <div class="button-container">
+            <button id="button" onclick="revealDetails()">אם אין לך כוח לגיא תלחץ</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Party Invitation</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .invitation-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+            }
+
+        .message {
+            position: absolute;
+            top: calc(50% - 12px);
+            left: calc(50% - 50px);
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+    </style>
+    <script>
+        function printMessage() {
+            var messages = ["גיא המלך", "גיא מלכתחילה", "הגיאבוט הגדול"];
+            var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+            var messageElement = document.createElement("div");
+            messageElement.className = "message";
+            messageElement.textContent = randomMessage;
+            messageElement.style.top = Math.random() * (window.innerHeight - 24) + "px";
+            messageElement.style.left = Math.random() * (window.innerWidth - 100) + "px";
+
+            document.body.appendChild(messageElement);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="invitation-card">
+            <h1>Party Invitation</h1>
+            <p>זמן: 19:00 1.9</p>
+            <p>מקום: הבית של מיטל לוטן-משה, סנה 23</p>
+            <p>פעילות: מלא כיף, ריקוד על עמוד ודניאל בנדיקטוב</p>
+            <p>ציוד: מלא אווירה ו7 שעות שינה</p>
+            <button class="button" onclick="printMessage()">תלחץ אם אין לך כוח לגיא</button>
+        </div>
+    </div>
+</body>
+</html>
